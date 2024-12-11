@@ -44,6 +44,7 @@ const index = ({ auth, projects, queryParams = null }) => {
 
   return (
     <AuthenticatedLayout
+      user={auth.user}
       header={
         <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
           Projects
@@ -160,7 +161,11 @@ const index = ({ auth, projects, queryParams = null }) => {
                             style={{ width: "50px" }}
                           />
                         </td>
-                        <td className="px-3 py-3">{project.name}</td>
+                        <th className="px-3 py-3 text-gray-250 text-nowrap hover:underline">
+                          <Link href={route("project.show", project.id)}>
+                            {project.name}
+                          </Link>
+                        </th>
                         <td className="px-3 py-3">
                           <span
                             className={
